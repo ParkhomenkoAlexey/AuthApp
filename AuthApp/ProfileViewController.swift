@@ -9,12 +9,18 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-
+    @IBOutlet weak var firstnameTextField: UITextField!
+    @IBOutlet weak var lastnameTextField: UITextField!
+    @IBOutlet weak var photoImageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
-
+    
+    @IBAction func changeInfoTapped(_ sender: UIButton) {
+    }
+    
     @IBAction func shareButtonTapped(_ sender: UIButton) {
     }
 }
