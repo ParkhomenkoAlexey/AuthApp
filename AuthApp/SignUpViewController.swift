@@ -10,86 +10,48 @@ import UIKit
 
 class SignUpViewController: UIViewController {
     
-    var someProperty: String? {
-        didSet {
-            print("someProperty")
-        }
-    }
-    
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var photoButton: UIButton!
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
-    
     @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField! {
-        didSet {
-            print("passwordTextField")
-        }
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        print(#function)
-    }
-    
-//    override func loadView() {
-//        print(#function)
-//    }
+    @IBOutlet weak var passwordTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(#function)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        print(#function)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        print(#function)
-    }
-    
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        print(#function)
-    }
-    
-    override func viewWillLayoutSubviews() {
-        print(#function)
-    }
-    
-    override func updateViewConstraints() {
-        // Изменение значений констант констрейнтов
-        super.updateViewConstraints()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        // сработает как в viewDidLoad(), так и в viewDidLayoutSubviews(), потому что view подгружается из IB
-//        photoImageView.layer.cornerRadius = photoImageView.frame.width / 2
-        print(#function)
-        // сохраняем положение scrollView
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        print(#function)
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        print(#function)
-    }
-    
-    deinit {
-        print("deinit")
+        photoImageView.layer.cornerRadius = 50
+        photoImageView.layer.borderWidth = 0.5
     }
     
     @IBAction func photoButtonTapped(_ sender: UIButton) {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.sourceType = .photoLibrary
+        present(imagePickerController, animated: true, completion: nil)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: segue)
+        guard let dvc = segue.destination as? ProfileViewController else { return }
+        dvc.firstname = firstNameTextField.text
+        dvc.lastname = lastNameTextField.text
+        dvc.image = photoImageView.image
+    }
     
-    @IBAction func signUpButtonTapped(_ sender: UIButton) {
+    @IBAction func unwindSegueToMainScreen(segue: UIStoryboardSegue) {
+//        guard segue.identifier == "unwindSegue" else { return }
+        guard let svc = segue.source as? ProfileViewController else { return }
+        self.firstNameTextField.text = svc.firstnameTextField.text
+        self.lastNameTextField.text = svc.lastnameTextField.text
+    }
+}
+
+// MARK: - UIImagePickerControllerDelegate
+extension SignUpViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        picker.dismiss(animated: true, completion: nil)
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
+        photoImageView.image = image
     }
 }
