@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SignUpViewController.swift
 //  AuthApp
 //
 //  Created by Алексей Пархоменко on 29.04.2020.
@@ -8,13 +8,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class SignUpViewController: UIViewController {
+    @IBOutlet weak var photoImageView: UIImageView!
+    
+    @IBOutlet weak var photoButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
     }
-
-
 }
-
