@@ -17,7 +17,7 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FaT-Hb-piY">
                                 <rect key="frame" x="157" y="94" width="100" height="100"/>
-                                <color key="backgroundColor" red="0.27450980390000002" green="0.23137254900000001" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="AIW-63-dDs"/>
                                     <constraint firstAttribute="width" constant="100" id="cwy-Wt-DTT"/>
@@ -65,7 +65,7 @@
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
                                         <connections>
-                                            <segue destination="M2b-Qj-2GV" kind="show" id="rdA-dM-u8K"/>
+                                            <action selector="registerTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xnd-An-vKD"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -106,29 +106,23 @@
         <!--Profile View Controller-->
         <scene sceneID="ZR6-yM-fOa">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="M2b-Qj-2GV" customClass="ProfileViewController" customModule="AuthApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="profileVC" modalPresentationStyle="fullScreen" id="M2b-Qj-2GV" customClass="ProfileViewController" customModule="AuthApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ScX-OF-Zv0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ваш профиль" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vt7-WN-xjZ">
-                                <rect key="frame" x="125" y="94" width="164" height="32.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W5s-cp-CcJ">
                                 <rect key="frame" x="78.5" y="790" width="257" height="22"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <state key="normal" title=" Поделиться изображением" image="square.and.arrow.up" catalog="system">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
                                     <action selector="shareButtonTapped:" destination="M2b-Qj-2GV" eventType="touchUpInside" id="jww-AP-iX8"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="NW6-kh-0xP">
-                                <rect key="frame" x="30" y="176.5" width="354" height="170"/>
+                                <rect key="frame" x="30" y="74" width="354" height="170"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="MLi-We-uxq">
                                         <rect key="frame" x="0.0" y="0.0" width="354" height="100"/>
@@ -164,25 +158,22 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title="Изменить">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
                                         <connections>
                                             <action selector="changeInfoTapped:" destination="M2b-Qj-2GV" eventType="touchUpInside" id="dKe-7X-8y0"/>
-                                            <segue destination="FXS-sy-XzX" kind="unwind" unwindAction="unwindSegueToMainScreenWithSegue:" id="bJB-9k-lIx"/>
                                         </connections>
                                     </button>
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.13725490196078433" green="0.12156862745098039" blue="0.12549019607843137" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Vt7-WN-xjZ" firstAttribute="centerX" secondItem="ScX-OF-Zv0" secondAttribute="centerX" id="7UA-HN-LIi"/>
                             <constraint firstItem="QpJ-mw-ZW9" firstAttribute="bottom" secondItem="W5s-cp-CcJ" secondAttribute="bottom" constant="50" id="9wf-OQ-5xJ"/>
+                            <constraint firstItem="NW6-kh-0xP" firstAttribute="top" secondItem="QpJ-mw-ZW9" secondAttribute="top" constant="30" id="DOm-fi-FIB"/>
                             <constraint firstItem="W5s-cp-CcJ" firstAttribute="centerX" secondItem="ScX-OF-Zv0" secondAttribute="centerX" id="MsF-fF-M4y"/>
-                            <constraint firstItem="Vt7-WN-xjZ" firstAttribute="top" secondItem="QpJ-mw-ZW9" secondAttribute="top" constant="50" id="YgO-8K-KqL"/>
                             <constraint firstItem="NW6-kh-0xP" firstAttribute="leading" secondItem="QpJ-mw-ZW9" secondAttribute="leading" constant="30" id="p8f-2I-0vv"/>
                             <constraint firstItem="QpJ-mw-ZW9" firstAttribute="trailing" secondItem="NW6-kh-0xP" secondAttribute="trailing" constant="30" id="tZ7-R4-cSs"/>
-                            <constraint firstItem="NW6-kh-0xP" firstAttribute="top" secondItem="Vt7-WN-xjZ" secondAttribute="bottom" constant="50" id="xri-99-B4l"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QpJ-mw-ZW9"/>
                     </view>
@@ -194,7 +185,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wAX-1o-pw8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="FXS-sy-XzX" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1818.840579710145" y="136.60714285714286"/>
         </scene>

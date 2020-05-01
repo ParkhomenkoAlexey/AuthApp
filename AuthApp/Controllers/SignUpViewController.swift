@@ -30,19 +30,10 @@ class SignUpViewController: UIViewController {
         present(imagePickerController, animated: true, completion: nil)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: segue)
-        guard let dvc = segue.destination as? ProfileViewController else { return }
-        dvc.firstname = firstNameTextField.text
-        dvc.lastname = lastNameTextField.text
-        dvc.image = photoImageView.image
-    }
-    
-    @IBAction func unwindSegueToMainScreen(segue: UIStoryboardSegue) {
-//        guard segue.identifier == "unwindSegue" else { return }
-        guard let svc = segue.source as? ProfileViewController else { return }
-        self.firstNameTextField.text = svc.firstnameTextField.text
-        self.lastNameTextField.text = svc.lastnameTextField.text
+    @IBAction func registerTapped(_ sender: Any) {
+        let mainTabBarVC = MainTabBarController()
+        mainTabBarVC.modalPresentationStyle = .fullScreen
+        present(mainTabBarVC, animated: true, completion: nil)
     }
 }
 

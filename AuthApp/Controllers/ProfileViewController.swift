@@ -21,17 +21,18 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "My profile"
+        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
         firstnameTextField.text = firstname
         lastnameTextField.text = lastname
         photoImageView.image = image
     }
     
     @IBAction func changeInfoTapped(_ sender: UIButton) {
-//        performSegue(withIdentifier: "unwindSegue", sender: nil)
     }
     
     @IBAction func shareButtonTapped(_ sender: UIButton) {
-        //        let shareController = UIActivityViewController(activityItems: ["Привет!", "Как дела?"], applicationActivities: nil)
         guard let image = photoImageView.image else { return }
         let shareController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
         
